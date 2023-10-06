@@ -103,7 +103,8 @@ final class WishMakerViewController: UIViewController {
         NSLayoutConstraint.activate([
             description.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             description.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.descriptionRight),
-            description.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.descriptionTop)
+            description.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.descriptionTop),
+            description.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10)
         ])
     }
     
