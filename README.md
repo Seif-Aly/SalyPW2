@@ -14,6 +14,9 @@ Question: What does the code on lines 25 and 29 do?
 For line 25: When you add a view to a superview, the autoresizing mask constraints of view are translated into Auto Layout constraints by default. 
 But when setting translatesAutoresizingMaskIntoConstraints to false indicates that we want to use Auto Layout constraints to control the view's layout
 instead of the older autoresizing system.
+
 For line 29: adds title view to main view, and itt means that the title view will be displayed within the bounds of the main view
 
+Question: What is a safe area layout guide?
 
+Safe Area Layout Guide is to defines a safe, unobstructed area on the screen that helps to position UI elements within this safe area using constraints by ensuring that it will be always visible and correctly positioned on different devices.
