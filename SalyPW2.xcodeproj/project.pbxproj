@@ -14,6 +14,7 @@
 		306C7DE32ACB2202000615F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 306C7DE12ACB2202000615F1 /* LaunchScreen.storyboard */; };
 		309A7C542AD003C000E706F9 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A7C532AD003C000E706F9 /* CustomSlider.swift */; };
 		30C406792AEF21BC00356BA3 /* UIView+Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C406782AEF21BC00356BA3 /* UIView+Pin.swift */; };
+		30C4067B2AF04DFB00356BA3 /* WishStoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C4067A2AF04DFB00356BA3 /* WishStoringViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		306C7DE42ACB2202000615F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		309A7C532AD003C000E706F9 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		30C406782AEF21BC00356BA3 /* UIView+Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Pin.swift"; sourceTree = "<group>"; };
+		30C4067A2AF04DFB00356BA3 /* WishStoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishStoringViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				306C7DD62ACB2201000615F1 /* AppDelegate.swift */,
 				306C7DD82ACB2201000615F1 /* SceneDelegate.swift */,
 				306C7DDA2ACB2201000615F1 /* WishMakerViewController.swift */,
+				30C4067A2AF04DFB00356BA3 /* WishStoringViewController.swift */,
 				30C406782AEF21BC00356BA3 /* UIView+Pin.swift */,
 				309A7C532AD003C000E706F9 /* CustomSlider.swift */,
 				306C7DDF2ACB2202000615F1 /* Assets.xcassets */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C4067B2AF04DFB00356BA3 /* WishStoringViewController.swift in Sources */,
 				30C406792AEF21BC00356BA3 /* UIView+Pin.swift in Sources */,
 				306C7DDB2ACB2201000615F1 /* WishMakerViewController.swift in Sources */,
 				306C7DD72ACB2201000615F1 /* AppDelegate.swift in Sources */,

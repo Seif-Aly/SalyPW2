@@ -165,7 +165,6 @@ final class WishMakerViewController: UIViewController {
     }
     @objc
     private func addWishButtonPressed(){
-        
-        
+        present(WishStoringViewController(), animated: true)
     }
 }
