@@ -19,7 +19,7 @@ final class WishMakerViewController: UIViewController {
         static let sliderMin: CGFloat = 0
         static let sliderMax: CGFloat = 1
         static let sliderRight: CGFloat = 20
-        static let sliderBottom: CGFloat = -10
+        static let sliderBottom: CGFloat = -20
         static let colorOpacity: CGFloat = 1.0
         static let sliderTitleTop: CGFloat = 20
         static let sliderTitleRight: CGFloat = 20
@@ -30,14 +30,23 @@ final class WishMakerViewController: UIViewController {
         static let buttonHeight: CGFloat = 70
         static let buttonWidth: CGFloat = 100
         static let buttonBottom: CGFloat = -20
+        static let wishButtonHeight: CGFloat = 70
+        static let wishButtonBottom: CGFloat = 20
+        static let wishButtonRadius: CGFloat = 10.0
+        static let wishButtonSide: CGFloat = 20
         
         static let title = "Wish Maker"
+        static let wishButtonText = "My wish"
         static let description = "Our app will make all your dreams true!"
         static let red = "Red"
         static let blue = "Blue"
         static let green = "Green"
     }
-    private var stack: UIStackView!
+    
+    private var sliderStack: UIStackView!
+    private let addHideButton: UIButton = UIButton(type: .system)
+    private let addWishButton: UIButton = UIButton(type: .system)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -47,42 +56,38 @@ final class WishMakerViewController: UIViewController {
         view.backgroundColor = .black
         configureDescription(below: configureTitle())
         configureSliders()
-        configureButton()
+        ConfigureaddHideButton()
+        configureAddWishButton()
     }
     
-    private func configureButton(){
-        let myButton = UIButton()
-        myButton.setTitle("Hide Slider", for: .normal)
-        myButton.setTitleColor(.systemPink, for: .normal)
-        myButton.backgroundColor = .white
-        myButton.layer.cornerRadius = Constants.cornerRadius
-        myButton.layer.borderWidth = Constants.borderWidth
-        myButton.translatesAutoresizingMaskIntoConstraints = false
-        myButton.addTarget(self, action:#selector(hideSlider), for: .touchUpInside)
-        
-
-        view.addSubview(myButton)
+    private func ConfigureaddHideButton(){
+        addHideButton.setTitle("Hide Slider", for: .normal)
+        addHideButton.setTitleColor(.systemPink, for: .normal)
+        addHideButton.backgroundColor = .white
+        addHideButton.layer.cornerRadius = Constants.cornerRadius
+        addHideButton.layer.borderWidth = Constants.borderWidth
+        addHideButton.translatesAutoresizingMaskIntoConstraints = false
+        addHideButton.addTarget(self, action:#selector(hideSlider), for: .touchUpInside)
+        view.addSubview(addHideButton)
         NSLayoutConstraint.activate([
-            myButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            myButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
-            myButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth),
-            myButton.bottomAnchor.constraint(equalTo: stack.topAnchor, constant: Constants.buttonBottom)
+            addHideButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addHideButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
+            addHideButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth),
+            addHideButton.bottomAnchor.constraint(equalTo: sliderStack.topAnchor, constant: Constants.buttonBottom)
         ])
     }
-   
+    
     @objc func hideSlider(){
-        stack.isHidden = !stack.isHidden
-        
+        sliderStack.isHidden = !sliderStack.isHidden
     }
-
+    
     private func configureTitle() -> UILabel {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = Constants.title
-        //title.font = UIFont.boldSystemFont(ofSize: Constants.titleFontSize)
         title.font = UIFont.boldSystemFont(ofSize: Constants.titleFontSize)
         title.textColor = UIColor.systemRed
-
+        
         view.addSubview(title)
         NSLayoutConstraint.activate([
             title.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -91,14 +96,14 @@ final class WishMakerViewController: UIViewController {
         
         return title
     }
-
+    
     private func configureDescription(below titleLabel: UILabel) {
         let description = UILabel()
         description.translatesAutoresizingMaskIntoConstraints = false
         description.text = Constants.description
         description.font = UIFont.systemFont(ofSize: Constants.descriptionFontSize)
         description.textColor = UIColor.white
-
+        
         view.addSubview(description)
         NSLayoutConstraint.activate([
             description.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -121,17 +126,18 @@ final class WishMakerViewController: UIViewController {
         for slider in [sliderRed, sliderBlue, sliderGreen] {
             stack.addArrangedSubview(slider)
         }
+        view.addSubview(addWishButton)
         NSLayoutConstraint.activate([
             stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.sliderRight),
-            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constants.sliderBottom)
+            stack.bottomAnchor.constraint(equalTo: addWishButton.topAnchor, constant: Constants.sliderBottom)
         ])
         sliderRed.valueChanged = { [weak self] value in
-                let red = CGFloat(value)
-                let blue = CGFloat(sliderBlue.slider.value)
-                let green = CGFloat(sliderGreen.slider.value)
+            let red = CGFloat(value)
+            let blue = CGFloat(sliderBlue.slider.value)
+            let green = CGFloat(sliderGreen.slider.value)
             self?.view.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: Constants.colorOpacity)
-            }
+        }
         sliderBlue.valueChanged = { [weak self] value in
             let red = CGFloat(sliderRed.slider.value)
             let blue = CGFloat(value)
@@ -144,6 +150,22 @@ final class WishMakerViewController: UIViewController {
             let green = CGFloat(value)
             self?.view.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: Constants.colorOpacity)
         }
-        self.stack = stack
+        self.sliderStack = stack
+    }
+    private func configureAddWishButton () {
+        view.addSubview(addWishButton)
+        addWishButton.setHeight(Constants.wishButtonHeight)
+        addWishButton.pinBottom(to: view, Constants.wishButtonBottom)
+        addWishButton.pinHorizontal(to: view, Constants.wishButtonSide)
+        addWishButton.backgroundColor = .white
+        addWishButton.setTitleColor(.systemPink, for: .normal)
+        addWishButton.setTitle(Constants.wishButtonText, for: .normal)
+        addWishButton.layer.cornerRadius = Constants.wishButtonRadius
+        addWishButton.addTarget(self, action: #selector(addWishButtonPressed), for: .touchUpInside)
+    }
+    @objc
+    private func addWishButtonPressed(){
+        
+        
     }
 }
