@@ -8,7 +8,7 @@
 import UIKit
 
 final class WishMakerViewController: UIViewController {
-    enum Constants{
+    private enum Constants{
         static let titleFontSize: CGFloat = 32
         static let descriptionFontSize: CGFloat = 20
         static let titleRight: CGFloat = 20
@@ -21,10 +21,7 @@ final class WishMakerViewController: UIViewController {
         static let sliderRight: CGFloat = 20
         static let sliderBottom: CGFloat = -20
         static let colorOpacity: CGFloat = 1.0
-        static let sliderTitleTop: CGFloat = 20
-        static let sliderTitleRight: CGFloat = 20
-        static let sliderOfSliderBottom: CGFloat = -10
-        static let sliderOfSliderRight: CGFloat = 20
+ 
         static let cornerRadius: CGFloat = 10.0
         static let borderWidth: CGFloat = 1
         static let buttonHeight: CGFloat = 70
@@ -42,7 +39,6 @@ final class WishMakerViewController: UIViewController {
         static let blue = "Blue"
         static let green = "Green"
     }
-    
     private var sliderStack: UIStackView!
     private let addHideButton: UIButton = UIButton(type: .system)
     private let addWishButton: UIButton = UIButton(type: .system)
@@ -50,6 +46,7 @@ final class WishMakerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
     }
     
     private func configureUI() {
@@ -167,4 +164,5 @@ final class WishMakerViewController: UIViewController {
     private func addWishButtonPressed(){
         present(WishStoringViewController(), animated: true)
     }
+    
 }

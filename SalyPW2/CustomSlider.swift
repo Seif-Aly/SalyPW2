@@ -8,6 +8,12 @@
 import UIKit
 
 final class CustomSlider: UIView {
+    private enum Constants{
+        static let sliderTitleTop: CGFloat = 20
+        static let sliderTitleRight: CGFloat = 20
+        static let sliderOfSliderBottom: CGFloat = -10
+        static let sliderOfSliderRight: CGFloat = 20
+    }
     var valueChanged: ((Double) -> Void)?
     var slider = UISlider()
     var titleView = UILabel()
@@ -32,12 +38,12 @@ final class CustomSlider: UIView {
         }
         NSLayoutConstraint.activate([
             titleView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleView.topAnchor.constraint(equalTo: topAnchor, constant: WishMakerViewController.Constants.sliderTitleTop),
-            titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: WishMakerViewController.Constants.sliderTitleRight),
+            titleView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.sliderTitleTop),
+            titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.sliderTitleRight),
             slider.topAnchor.constraint(equalTo: titleView.bottomAnchor),
             slider.centerXAnchor.constraint(equalTo: centerXAnchor),
-            slider.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: WishMakerViewController.Constants.sliderOfSliderBottom),
-            slider.leadingAnchor.constraint(equalTo: leadingAnchor, constant: WishMakerViewController.Constants.sliderOfSliderRight)
+            slider.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: Constants.sliderOfSliderBottom),
+            slider.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.sliderOfSliderRight)
         ])
     }
     @objc
