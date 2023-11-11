@@ -16,16 +16,25 @@ final class WishStoringViewController: UIViewController{
         static let tableColor: UIColor = .systemTeal
         static let wishesKey = "wishesKey"
         
+        static let tableViewIndex: Int = 1
+        
+        static let bottomLabel: Double = 10
+        static let leftLabel: Double = 60
+        static let textLabel: String = "Swipe left on wishes to delete"
+        static let colorLabel: UIColor = .white
+        
     }
     
     private let table: UITableView = UITableView(frame: .zero)
     private let defaults = UserDefaults.standard
-    private var wishArray: [String] = ["I wish to add cells to the table"]
+    private var wishArray: [String]!
+    private var labelView = UILabel()
     
     override func viewDidLoad() {
         view.backgroundColor = Constants.wishesColor
         configureTable()
         wishArray = (defaults.array(forKey: Constants.wishesKey) as? [String]) ?? []
+        configureLabel()
     }
 }
 // MARK: - UITableViewDataSource
@@ -37,7 +46,7 @@ extension WishStoringViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0){
-            return 1
+            return Constants.tableViewIndex
         }
         else{
             return wishArray.count
@@ -54,6 +63,7 @@ extension WishStoringViewController: UITableViewDataSource{
         table.pin(to: view, Constants.tableOffset)
         table.register(WrittenWishCell.self, forCellReuseIdentifier: WrittenWishCell.reuseId)
         table.register(AddWishCell.self, forCellReuseIdentifier: AddWishCell.reuseId)
+        table.delegate = self
     }
     
     func newWishAdded(wish: String) {
@@ -79,5 +89,29 @@ extension WishStoringViewController: UITableViewDataSource{
             }
         }
         return UITableViewCell()
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension WishStoringViewController: UITableViewDelegate {
+    private func configureLabel() {
+        view.addSubview(labelView)
+        labelView.text = Constants.textLabel
+        labelView.textColor = Constants.colorLabel
+        labelView.pinBottom(to: table.bottomAnchor, Constants.bottomLabel)
+        labelView.pinLeft(to: table.leadingAnchor, Constants.leftLabel)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == Constants.tableViewIndex
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            wishArray.remove(at: indexPath.row)
+            defaults.set(wishArray, forKey: Constants.wishesKey)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
