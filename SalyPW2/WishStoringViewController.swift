@@ -14,14 +14,19 @@ final class WishStoringViewController: UIViewController{
         static let numOfSections: Int = 2
         static let wishesColor: UIColor = .black
         static let tableColor: UIColor = .systemTeal
-        static let wishesKey = "wishesKey"
+        static let wishesKey: String = "wishesKey"
         
         static let tableViewIndex: Int = 1
         
         static let bottomLabel: Double = 10
-        static let leftLabel: Double = 60
-        static let textLabel: String = "Swipe left on wishes to delete"
+        static let textLabel: String = "Swipe left on wishes to delete or edit"
         static let colorLabel: UIColor = .white
+        
+        static let editTitle: String = "Edit"
+        static let deleteTitle: String = "Delete"
+        static let cancelTitle: String = "Cancel"
+        static let saveTitle: String = "Save"
+        static let editPlaceHolder: String = "Please enter your wish"
         
     }
     
@@ -99,19 +104,63 @@ extension WishStoringViewController: UITableViewDelegate {
         labelView.text = Constants.textLabel
         labelView.textColor = Constants.colorLabel
         labelView.pinBottom(to: table.bottomAnchor, Constants.bottomLabel)
-        labelView.pinLeft(to: table.leadingAnchor, Constants.leftLabel)
+        labelView.pinCenterX(to: table.centerXAnchor)
     }
     
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section == Constants.tableViewIndex
     }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            wishArray.remove(at: indexPath.row)
-            defaults.set(wishArray, forKey: Constants.wishesKey)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard indexPath.section == Constants.tableViewIndex else {
+            return nil
         }
+        
+        let editAction = UIContextualAction(style: .normal, title: Constants.editTitle) { [weak self] (_, _, completion) in
+            self?.editWish(at: indexPath)
+            completion(true)
+        }
+        editAction.backgroundColor = .systemBlue
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: Constants.deleteTitle) { [weak self] (_, _, completion) in
+            self?.deleteWish(at: indexPath)
+            completion(true)
+        }
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        return configuration
+    }
+    
+    private func deleteWish(at indexPath: IndexPath) {
+        wishArray.remove(at: indexPath.row)
+        defaults.set(wishArray, forKey: Constants.wishesKey)
+        table.deleteRows(at: [indexPath], with: .fade)
+    }
+    
+    private func editWish(at indexPath: IndexPath) {
+        let alertController = UIAlertController(title: Constants.editTitle, message: nil, preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = Constants.editPlaceHolder
+            textField.text = self.wishArray[indexPath.row]
+        }
+        
+        let cancelAction = UIAlertAction(title: Constants.cancelTitle, style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: Constants.saveTitle, style: .default) { [weak self] _ in
+            guard let textField = alertController.textFields?.first,
+                  let newWish = textField.text,
+                  !newWish.isEmpty else {
+                return
+            }
+            
+            self?.wishArray[indexPath.row] = newWish
+            self?.defaults.set(self?.wishArray, forKey: Constants.wishesKey)
+            self?.table.reloadRows(at: [indexPath], with: .automatic)
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }
