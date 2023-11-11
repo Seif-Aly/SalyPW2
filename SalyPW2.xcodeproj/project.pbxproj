@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3020E98B2AFFBE9A001C918D /* AddWishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020E98A2AFFBE9A001C918D /* AddWishCell.swift */; };
 		306C7DD72ACB2201000615F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C7DD62ACB2201000615F1 /* AppDelegate.swift */; };
 		306C7DD92ACB2201000615F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C7DD82ACB2201000615F1 /* SceneDelegate.swift */; };
 		306C7DDB2ACB2201000615F1 /* WishMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C7DDA2ACB2201000615F1 /* WishMakerViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3020E98A2AFFBE9A001C918D /* AddWishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWishCell.swift; sourceTree = "<group>"; };
 		306C7DD32ACB2201000615F1 /* SalyPW2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalyPW2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306C7DD62ACB2201000615F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		306C7DD82ACB2201000615F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		306C7DD52ACB2201000615F1 /* SalyPW2 */ = {
 			isa = PBXGroup;
 			children = (
+				3020E98A2AFFBE9A001C918D /* AddWishCell.swift */,
 				306C7DD62ACB2201000615F1 /* AppDelegate.swift */,
 				306C7DD82ACB2201000615F1 /* SceneDelegate.swift */,
 				306C7DDA2ACB2201000615F1 /* WishMakerViewController.swift */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3020E98B2AFFBE9A001C918D /* AddWishCell.swift in Sources */,
 				30C4067D2AF0646A00356BA3 /* WrittenWishCell.swift in Sources */,
 				30C4067B2AF04DFB00356BA3 /* WishStoringViewController.swift in Sources */,
 				30C406792AEF21BC00356BA3 /* UIView+Pin.swift in Sources */,
