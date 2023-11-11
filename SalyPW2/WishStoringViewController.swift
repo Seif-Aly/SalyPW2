@@ -14,14 +14,18 @@ final class WishStoringViewController: UIViewController{
         static let numOfSections: Int = 2
         static let wishesColor: UIColor = .black
         static let tableColor: UIColor = .systemTeal
+        static let wishesKey = "wishesKey"
         
     }
     
     private let table: UITableView = UITableView(frame: .zero)
+    private let defaults = UserDefaults.standard
     private var wishArray: [String] = ["I wish to add cells to the table"]
+    
     override func viewDidLoad() {
         view.backgroundColor = Constants.wishesColor
         configureTable()
+        wishArray = (defaults.array(forKey: Constants.wishesKey) as? [String]) ?? []
     }
 }
 // MARK: - UITableViewDataSource
@@ -55,6 +59,7 @@ extension WishStoringViewController: UITableViewDataSource{
     func newWishAdded(wish: String) {
         wishArray.append(wish)
         table.reloadData()
+        defaults.set(wishArray, forKey: Constants.wishesKey)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
