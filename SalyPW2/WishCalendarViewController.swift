@@ -15,7 +15,7 @@ final class WishCalendarViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCollection()
+        configureUI()
     }
     
     private let collectionView = UICollectionView(
@@ -23,15 +23,28 @@ final class WishCalendarViewController: UIViewController{
         collectionViewLayout: UICollectionViewFlowLayout()
     )
     
-    private func configureCollection() {
+    private func configureUI() {
+        configureCollection()
+        
+    }
+    
+    private func configureCollection(){
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .white
         collectionView.alwaysBounceVertical = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.contentInset = Constants.contentInset
+        if let layout = collectionView.collectionViewLayout as?
+            UICollectionViewFlowLayout {
+            layout.minimumLineSpacing = 0
+            layout.minimumInteritemSpacing = 0
+            
+            layout.invalidateLayout()
+        }
         /* Temporary line */
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(WishEventCell.self, forCellWithReuseIdentifier: WishEventCell.reuseIdentifier)
+        
         view.addSubview(collectionView)
         
         collectionView.pinHorizontal(to: view)
@@ -49,12 +62,20 @@ extension WishCalendarViewController: UICollectionViewDataSource {
         return 10
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
+                                                        WishEventCell.reuseIdentifier, for: indexPath)
+        guard let wishEventCell = cell as? WishEventCell else {
+            return cell
+        }
+        wishEventCell.configure(
+            with: WishEventModel(
+                title: "Test",
+                description: "Test description",
+                startDate: "Start date",
+                endDate: "End date"
+            )
+        )
         return cell
     }
 }
