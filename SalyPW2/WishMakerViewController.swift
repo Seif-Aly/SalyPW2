@@ -21,16 +21,21 @@ final class WishMakerViewController: UIViewController {
         static let sliderRight: CGFloat = 20
         static let sliderBottom: CGFloat = -20
         static let colorOpacity: CGFloat = 1.0
- 
+        
         static let cornerRadius: CGFloat = 10.0
         static let borderWidth: CGFloat = 1
         static let buttonHeight: CGFloat = 70
         static let buttonWidth: CGFloat = 100
         static let buttonBottom: CGFloat = -20
         static let wishButtonHeight: CGFloat = 70
-        static let wishButtonBottom: CGFloat = 20
         static let wishButtonRadius: CGFloat = 10.0
-        static let wishButtonSide: CGFloat = 20
+        
+        static let scheduleWishesButtonRadius: CGFloat = 10.0
+        static let scheduleWishedButtonHeight: CGFloat = 70
+        
+        static let spacing: CGFloat = 10
+        static let actionStackBottom: CGFloat = 20
+        static let actionStackLeading: CGFloat = 20
         
         static let title = "Wish Maker"
         static let wishButtonText = "My wish"
@@ -38,10 +43,15 @@ final class WishMakerViewController: UIViewController {
         static let red = "Red"
         static let blue = "Blue"
         static let green = "Green"
+        static let scheduleWishesButtonText = "Schedule wishe granting"
+        static let hideButtonText = "Hide Slider"
+        
     }
     private var sliderStack: UIStackView!
     private let addHideButton: UIButton = UIButton(type: .system)
     private let addWishButton: UIButton = UIButton(type: .system)
+    private let scheduleWishesButton: UIButton = UIButton(type: .system)
+    private let actionStack: UIStackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +65,12 @@ final class WishMakerViewController: UIViewController {
         configureSliders()
         ConfigureaddHideButton()
         configureAddWishButton()
+        configureScheduleWishesButton()
+        configureActionStack()
     }
     
     private func ConfigureaddHideButton(){
-        addHideButton.setTitle("Hide Slider", for: .normal)
+        addHideButton.setTitle(Constants.hideButtonText, for: .normal)
         addHideButton.setTitleColor(.systemPink, for: .normal)
         addHideButton.backgroundColor = .white
         addHideButton.layer.cornerRadius = Constants.cornerRadius
@@ -92,6 +104,37 @@ final class WishMakerViewController: UIViewController {
         ])
         
         return title
+    }
+    
+    private func configureScheduleWishesButton(){
+        view.addSubview(scheduleWishesButton)
+        scheduleWishesButton.setHeight(Constants.scheduleWishedButtonHeight)
+        
+        scheduleWishesButton.backgroundColor = .white
+        scheduleWishesButton.setTitleColor(.systemPink, for: .normal)
+        scheduleWishesButton.setTitle(Constants.scheduleWishesButtonText, for: .normal)
+        
+        scheduleWishesButton.layer.cornerRadius = Constants.scheduleWishesButtonRadius
+        scheduleWishesButton.addTarget(self, action: #selector(scheduleWishesButtonPressed), for: .touchUpInside)
+    }
+    
+    private func configureActionStack(){
+        actionStack.axis = .vertical
+        view.addSubview(actionStack)
+        actionStack.spacing = Constants.spacing
+        
+        for button in [addWishButton, scheduleWishesButton]{
+            actionStack.addArrangedSubview(button)
+        }
+        
+        
+        actionStack.pinBottom(to: view, Constants.actionStackBottom)
+        actionStack.pinHorizontal(to: view, Constants.actionStackLeading)
+    }
+    
+    @objc
+    private func scheduleWishesButtonPressed(){
+        
     }
     
     private func configureDescription(below titleLabel: UILabel) {
@@ -152,8 +195,6 @@ final class WishMakerViewController: UIViewController {
     private func configureAddWishButton () {
         view.addSubview(addWishButton)
         addWishButton.setHeight(Constants.wishButtonHeight)
-        addWishButton.pinBottom(to: view, Constants.wishButtonBottom)
-        addWishButton.pinHorizontal(to: view, Constants.wishButtonSide)
         addWishButton.backgroundColor = .white
         addWishButton.setTitleColor(.systemPink, for: .normal)
         addWishButton.setTitle(Constants.wishButtonText, for: .normal)
