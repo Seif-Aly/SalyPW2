@@ -11,6 +11,9 @@
 		302E28B82B726EDE00FDA2E2 /* WishCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E28B72B726EDE00FDA2E2 /* WishCalendarViewController.swift */; };
 		302E28BA2B728E0300FDA2E2 /* WishEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E28B92B728E0300FDA2E2 /* WishEventCell.swift */; };
 		302E28BC2B72905F00FDA2E2 /* WishEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E28BB2B72905F00FDA2E2 /* WishEventModel.swift */; };
+		302E28C02B729E7F00FDA2E2 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E28BF2B729E7F00FDA2E2 /* CalendarEventModel.swift */; };
+		302E28C22B729EAE00FDA2E2 /* CalendarManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E28C12B729EAE00FDA2E2 /* CalendarManaging.swift */; };
+		302E28C42B729ED900FDA2E2 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E28C32B729ED900FDA2E2 /* CalendarManager.swift */; };
 		306C7DD72ACB2201000615F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C7DD62ACB2201000615F1 /* AppDelegate.swift */; };
 		306C7DD92ACB2201000615F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C7DD82ACB2201000615F1 /* SceneDelegate.swift */; };
 		306C7DDB2ACB2201000615F1 /* WishMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C7DDA2ACB2201000615F1 /* WishMakerViewController.swift */; };
@@ -27,6 +30,9 @@
 		302E28B72B726EDE00FDA2E2 /* WishCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishCalendarViewController.swift; sourceTree = "<group>"; };
 		302E28B92B728E0300FDA2E2 /* WishEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishEventCell.swift; sourceTree = "<group>"; };
 		302E28BB2B72905F00FDA2E2 /* WishEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishEventModel.swift; sourceTree = "<group>"; };
+		302E28BF2B729E7F00FDA2E2 /* CalendarEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
+		302E28C12B729EAE00FDA2E2 /* CalendarManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManaging.swift; sourceTree = "<group>"; };
+		302E28C32B729ED900FDA2E2 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		306C7DD32ACB2201000615F1 /* SalyPW2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalyPW2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306C7DD62ACB2201000615F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		306C7DD82ACB2201000615F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +90,9 @@
 				306C7DE42ACB2202000615F1 /* Info.plist */,
 				302E28B92B728E0300FDA2E2 /* WishEventCell.swift */,
 				302E28BB2B72905F00FDA2E2 /* WishEventModel.swift */,
+				302E28BF2B729E7F00FDA2E2 /* CalendarEventModel.swift */,
+				302E28C12B729EAE00FDA2E2 /* CalendarManaging.swift */,
+				302E28C32B729ED900FDA2E2 /* CalendarManager.swift */,
 			);
 			path = SalyPW2;
 			sourceTree = "<group>";
@@ -161,7 +170,10 @@
 				302E28B82B726EDE00FDA2E2 /* WishCalendarViewController.swift in Sources */,
 				3020E98B2AFFBE9A001C918D /* AddWishCell.swift in Sources */,
 				30C4067D2AF0646A00356BA3 /* WrittenWishCell.swift in Sources */,
+				302E28C42B729ED900FDA2E2 /* CalendarManager.swift in Sources */,
+				302E28C22B729EAE00FDA2E2 /* CalendarManaging.swift in Sources */,
 				30C4067B2AF04DFB00356BA3 /* WishStoringViewController.swift in Sources */,
+				302E28C02B729E7F00FDA2E2 /* CalendarEventModel.swift in Sources */,
 				302E28BC2B72905F00FDA2E2 /* WishEventModel.swift in Sources */,
 				30C406792AEF21BC00356BA3 /* UIView+Pin.swift in Sources */,
 				302E28BA2B728E0300FDA2E2 /* WishEventCell.swift in Sources */,
@@ -310,6 +322,7 @@
 				DEVELOPMENT_TEAM = 5YN4282RRA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SalyPW2/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Calender access is important";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -338,6 +351,7 @@
 				DEVELOPMENT_TEAM = 5YN4282RRA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SalyPW2/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Calender access is important";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
