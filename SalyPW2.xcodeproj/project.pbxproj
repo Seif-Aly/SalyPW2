@@ -14,6 +14,9 @@
 		302E28C02B729E7F00FDA2E2 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E28BF2B729E7F00FDA2E2 /* CalendarEventModel.swift */; };
 		302E28C22B729EAE00FDA2E2 /* CalendarManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E28C12B729EAE00FDA2E2 /* CalendarManaging.swift */; };
 		302E28C42B729ED900FDA2E2 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E28C32B729ED900FDA2E2 /* CalendarManager.swift */; };
+		302E28C62B72A74C00FDA2E2 /* AddEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E28C52B72A74C00FDA2E2 /* AddEventCell.swift */; };
+		302E28C82B72A77800FDA2E2 /* WishEventCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E28C72B72A77800FDA2E2 /* WishEventCreationView.swift */; };
+		302E28D22B72DC0700FDA2E2 /* Eventsmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 302E28D02B72DC0700FDA2E2 /* Eventsmodel.xcdatamodeld */; };
 		306C7DD72ACB2201000615F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C7DD62ACB2201000615F1 /* AppDelegate.swift */; };
 		306C7DD92ACB2201000615F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C7DD82ACB2201000615F1 /* SceneDelegate.swift */; };
 		306C7DDB2ACB2201000615F1 /* WishMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C7DDA2ACB2201000615F1 /* WishMakerViewController.swift */; };
@@ -33,6 +36,9 @@
 		302E28BF2B729E7F00FDA2E2 /* CalendarEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
 		302E28C12B729EAE00FDA2E2 /* CalendarManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManaging.swift; sourceTree = "<group>"; };
 		302E28C32B729ED900FDA2E2 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		302E28C52B72A74C00FDA2E2 /* AddEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCell.swift; sourceTree = "<group>"; };
+		302E28C72B72A77800FDA2E2 /* WishEventCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishEventCreationView.swift; sourceTree = "<group>"; };
+		302E28D12B72DC0700FDA2E2 /* Eventsmodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eventsmodel.xcdatamodel; sourceTree = "<group>"; };
 		306C7DD32ACB2201000615F1 /* SalyPW2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalyPW2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306C7DD62ACB2201000615F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		306C7DD82ACB2201000615F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +99,9 @@
 				302E28BF2B729E7F00FDA2E2 /* CalendarEventModel.swift */,
 				302E28C12B729EAE00FDA2E2 /* CalendarManaging.swift */,
 				302E28C32B729ED900FDA2E2 /* CalendarManager.swift */,
+				302E28C52B72A74C00FDA2E2 /* AddEventCell.swift */,
+				302E28C72B72A77800FDA2E2 /* WishEventCreationView.swift */,
+				302E28D02B72DC0700FDA2E2 /* Eventsmodel.xcdatamodeld */,
 			);
 			path = SalyPW2;
 			sourceTree = "<group>";
@@ -170,12 +179,15 @@
 				302E28B82B726EDE00FDA2E2 /* WishCalendarViewController.swift in Sources */,
 				3020E98B2AFFBE9A001C918D /* AddWishCell.swift in Sources */,
 				30C4067D2AF0646A00356BA3 /* WrittenWishCell.swift in Sources */,
+				302E28D22B72DC0700FDA2E2 /* Eventsmodel.xcdatamodeld in Sources */,
+				302E28C82B72A77800FDA2E2 /* WishEventCreationView.swift in Sources */,
 				302E28C42B729ED900FDA2E2 /* CalendarManager.swift in Sources */,
 				302E28C22B729EAE00FDA2E2 /* CalendarManaging.swift in Sources */,
 				30C4067B2AF04DFB00356BA3 /* WishStoringViewController.swift in Sources */,
 				302E28C02B729E7F00FDA2E2 /* CalendarEventModel.swift in Sources */,
 				302E28BC2B72905F00FDA2E2 /* WishEventModel.swift in Sources */,
 				30C406792AEF21BC00356BA3 /* UIView+Pin.swift in Sources */,
+				302E28C62B72A74C00FDA2E2 /* AddEventCell.swift in Sources */,
 				302E28BA2B728E0300FDA2E2 /* WishEventCell.swift in Sources */,
 				306C7DDB2ACB2201000615F1 /* WishMakerViewController.swift in Sources */,
 				306C7DD72ACB2201000615F1 /* AppDelegate.swift in Sources */,
@@ -392,6 +404,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		302E28D02B72DC0700FDA2E2 /* Eventsmodel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				302E28D12B72DC0700FDA2E2 /* Eventsmodel.xcdatamodel */,
+			);
+			currentVersion = 302E28D12B72DC0700FDA2E2 /* Eventsmodel.xcdatamodel */;
+			path = Eventsmodel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 306C7DCB2ACB2200000615F1 /* Project object */;
 }

@@ -61,8 +61,10 @@ class WishEventCell: UICollectionViewCell{
     func configure(with event: WishEventModel) {
         titleLabel.text = event.title
         descriptionLabel.text = event.description
-        startDateLabel.text = "Start Date: \(event.startDate)"
-        endDateLabel.text = "End Date: \(event.endDate)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM.dd.YYYY"
+        startDateLabel.text = "Start: \(dateFormatter.string(from: event.startDate))"
+        endDateLabel.text = "End: \(dateFormatter.string(from: event.endDate))"
     }
     // MARK: - UI Configuration
     private func configureWrap() {
